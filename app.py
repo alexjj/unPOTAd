@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import folium
 from streamlit_folium import st_folium
-
+from folium.plugins import MarkerCluster
 
 @st.cache_data
 def get_programs():
@@ -44,6 +44,8 @@ if selected_country:
         map_center = [first["latitude"], first["longitude"]]
         fmap = folium.Map(location=map_center, zoom_start=6)
 
+        marker_cluster = MarkerCluster().add_to(fmap)
+
         for park in unactivated:
             lat = park["latitude"]
             lon = park["longitude"]
@@ -58,7 +60,7 @@ if selected_country:
                 location=[lat, lon],
                 tooltip=name,
                 popup=folium.Popup(popup_html, max_width=250)
-            ).add_to(fmap)
+            ).add_to(marker_cluster)
 
         st_folium(fmap, width=700, height=700, returned_objects=[])
     else:
