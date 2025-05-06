@@ -63,3 +63,8 @@ if selected_country:
         st_folium(fmap, width=700, height=700, returned_objects=[])
     else:
         st.info("No unactivated parks found for this country.")
+
+with st.expander("What is UnPOTAd?", icon="❓"):
+    st.markdown('''
+        A tool that helps you find unactivated POTA sites in your country. It retrieves all the parks and checks the number of activations. Designed by [GM5ALX](https://gm5alx.uk), see the [source code](https://github.com/alexjj/unpotad). Your responsibility to check the validity of the data and the parks. The data is provided by [POTA](https://pota.app) and is not guaranteed to be accurate or up-to-date. Use at your own risk.
+    ''')
