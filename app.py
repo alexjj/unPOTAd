@@ -25,7 +25,7 @@ st.title("Unactivated POTA Sites by Country")
 
 # Dropdown: Country/Region selection
 programs = get_programs()
-selected_country = st.selectbox("Select a Country/Region", list(programs.keys()))
+selected_country = st.selectbox("Select a Country/Region", list(programs.keys()), placeholder="Select or type a country/region", index=None)
 
 if selected_country:
     prefix = programs[selected_country]
